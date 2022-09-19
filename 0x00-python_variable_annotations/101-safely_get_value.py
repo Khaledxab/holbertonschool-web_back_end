@@ -8,7 +8,11 @@ from typing import Union, Mapping, Any, TypeVar
 T = TypeVar('T')
 
 
-def safely_get_value(dct, key, default = None):
+def safely_get_value(dct: Mapping, key: Any,
+                     default: Union[T, None] = None) -> Union[Any, T]:
+    """
+    safely_get_value
+    """
     if key in dct:
         return dct[key]
     else:
