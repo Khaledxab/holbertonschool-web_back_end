@@ -9,7 +9,7 @@ class LIFOCache(BaseCaching):
     """ LIFOCache class """
 
 
-def __init__(self):
+    def __init__(self):
         """[initialization]
         """
         super().__init__()
