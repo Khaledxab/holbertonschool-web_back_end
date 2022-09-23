@@ -7,22 +7,30 @@ from base_caching import BaseCaching
 
 class LIFOCache(BaseCaching):
     """ LIFOCache class """
-    def __init__(self):
-        """ Init """
+
+
+def __init__(self):
+        """[initialization]
+        """
         super().__init__()
-        self.keys = []
+        self.current_cache = []
 
     def put(self, key, item):
-        """ Add an item in the cache """
-        if key is not None and item is not None:
-            if key in self.keys:
-                self.keys.remove(key)
-            self.keys.append(key)
+        """[put]
+        Args:
+            key ([str]): [key]
+            item ([str]): [value to assign]
+        """
+        if key and item:
             self.cache_data[key] = item
-            if len(self.keys) > BaseCaching.MAX_ITEMS:
-                last = self.keys.pop(0)
-                del self.cache_data[last]
-                print('DISCARD: {}'.format(last))
+            if key not in self.current_cache:
+                self.current_cache.append(key)
+            else:
+                self.current_cache.append(next(reversed(key)))
+            if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+                discarded = self.current_cache.pop(-2)
+                del self.cache_data[discarded]
+                print("DISCARD: {}".format(discarded))
 
     def get(self, key):
         """ Get an item by key """
