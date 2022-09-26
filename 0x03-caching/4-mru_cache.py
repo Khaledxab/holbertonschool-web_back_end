@@ -5,7 +5,7 @@ MRUCashe
 from base_caching import BaseCaching
 
 
-class MRUCashe(BaseCaching):
+class MRUCache(BaseCaching):
     """
     MRUCashe
     Args:
