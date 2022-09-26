@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Basic Cashe
+LRUCashe
 """
 from base_caching import BaseCaching
 
