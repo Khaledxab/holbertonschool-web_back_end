@@ -9,12 +9,15 @@ class LRUCache(BaseCaching):
     """LRU Cache"""
 
     def __init__(self):
-        """Constructor"""
+        """Constructor
+        """
         super().__init__()
         self.keys = []
 
     def put(self, key, item):
-        """Add an item in the cache"""
+        """Add an item
+         in the cache
+         """
         if key and item:
             if key in self.keys:
                 self.keys.remove(key)
@@ -30,4 +33,4 @@ class LRUCache(BaseCaching):
         if key in self.keys:
             self.keys.remove(key)
             self.keys.append(key)
-        return self.cache_data.get(key, None)
+        return self.cache_data.get(key) or None
