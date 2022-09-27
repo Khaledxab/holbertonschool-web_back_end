@@ -51,5 +51,5 @@ class Server:
                 self.indexed_dataset()) else None,
             'page_size': page_size,
             'data': [self.indexed_dataset()[i] for i in range(index, index +
-                                                             page_size)],
+                                                              page_size)],
         }
