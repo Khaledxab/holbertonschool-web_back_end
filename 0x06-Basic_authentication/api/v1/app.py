@@ -20,7 +20,7 @@ if os.getenv('AUTH_TYPE') == 'auth':
 
 
 @app.before_request
-def before_request():
+def before_request() -> None:
     if auth is None:
         return
     if auth.require_auth(request.path, ['/api/v1/status/',
