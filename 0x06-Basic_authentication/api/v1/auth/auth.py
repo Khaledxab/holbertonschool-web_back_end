@@ -29,7 +29,6 @@ class Auth:
         """
         authorization_header
         """
-        return None
         if request:
             return request.headers.get('Authorization')
 
