@@ -6,16 +6,17 @@ Basic Auth
 from api.v1.auth.auth import Auth
 import base64
 
+
 class BasicAuth(Auth):
     """[BasicAuth]
     """
     def extract_base64_authorization_header(self,
                                             authorization_header: str) -> str:
         """[summary]
-            
+
             Args:
                 authorization_header (str): [description]
-    
+
             Returns:
                 str: [description]
             """
