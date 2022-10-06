@@ -40,7 +40,7 @@ def before_request() -> None:
         request
         request.current_user = auth.current_user(request)
         if not auth.current_user(request):
-            abort(404)
+            abort(403)
 
 
 @app.errorhandler(404)
