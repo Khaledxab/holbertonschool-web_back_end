@@ -37,9 +37,9 @@ def before_request() -> None:
                                         '/api/v1/forbidden/']):
         if not auth.authorization_header(request):
             abort(401)
-        request.current_user = auth.current_user(request)
+        request
         if not auth.current_user(request):
-            abort(403)
+            abort(404)
 
 
 @app.errorhandler(404)
