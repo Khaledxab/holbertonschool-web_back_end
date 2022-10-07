@@ -5,6 +5,7 @@ import uuid
 from models.user import User
 
 
+
 class SessionAuth(Auth):
     """ Session Auth class"""
     user_id_by_session_id = {}
