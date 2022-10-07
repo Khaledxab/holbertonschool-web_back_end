@@ -1,4 +1,4 @@
-##!/usr/bin/env python3
+#!/usr/bin/env python3
 """ Session Exp Auth """
 from api.v1.auth.session_auth import SessionAuth
 from datetime import datetime, timedelta
