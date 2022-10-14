@@ -40,6 +40,7 @@ def login():
     else:
         abort(401)
 
+
 @app.route('/sessions', methods=['DELETE'], strict_slashes=False)
 def logout():
     """ Log out, takes a cookie value from the request and returns a JSON
