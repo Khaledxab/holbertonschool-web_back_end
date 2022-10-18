@@ -37,8 +37,6 @@ class TestGetJson(unittest.TestCase):
     ])
     def test_get_json(self, test_url, test_payload):
         """ test that the method returns what it is supposed to """
-        mock = unittest.mock.Mock()
-        mock.return_value.json.return_value = test_payload
-        get_json = mock(test_url)
-        self.assertEqual(get_json, test_payload)
-        mock.assert_called_once_with(test_url)
+        mock_get.return_value = test_payload
+        result = get_json(test_url)
+        self.assertEqual(result, test_payload)
