@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Parameterize a unit test and Mock HTTP calls"""
+""" Parameterize a unit test, Mock HTTP calls """
 import unittest
 from unittest.mock import patch
 from parameterized import parameterized
@@ -7,6 +7,7 @@ from utils import access_nested_map, get_json
 
 
 class TestAccessNestedMap(unittest.TestCase):
+    """ TESTCASE """
     """ to test the function for following inputs """
     @parameterized.expand([
         ({"a": 1}, ("a",), 1),
@@ -30,13 +31,13 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
-    """ test the function for following inputs """
+    """ to test the function for following inputs """
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False}),
     ])
     @patch('test_utils.get_json')
-    def test_get_json(self, test_url, mock_get):
+    def test_get_json(self, test_url, test_payload, mock_get):
         """ test that the method returns what it is supposed to """
         mock_get.return_value = test_payload
         result = get_json(test_url)
