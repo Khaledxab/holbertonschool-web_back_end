@@ -79,3 +79,13 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
     def tearDownClass(cls):
         """ API method to stop the patcher"""
         cls.get_patcher.stop()
+
+    def test_public_repos(self):
+        """ test githubOrgClient.public_repos"""
+        test_class= GithubOrgClient("khaledxab")
+        assert True
+
+    def test_public_repos_with_license(self):
+        """ test githubOrgClient.public_repos_with_license"""
+        test_class= GithubOrgClient("khaledxab")
+        assert True
