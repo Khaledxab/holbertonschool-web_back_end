@@ -9,6 +9,7 @@ from client import GithubOrgClient
 class TestGithubOrgClient(unittest.TestCase):
     """ test class """
     """ input to test the function """
+
     @parameterized.expand([
         ("google"),
         ("abc"),
