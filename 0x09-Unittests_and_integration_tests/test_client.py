@@ -39,7 +39,7 @@ class TestGithubOrgClient(unittest.TestCase):
         """ test that the method returns correct value """
         test_payload = [{"name": "holberton"}]
         with patch.object(GithubOrgClient, '_public_repos_url', new_callable=PropertyMock) as mock:
-            mock.return_value = "holberton"
-            result = GithubOrgClient('holberton')
-            self.assertEqual(result.public_repos(), test_payload)
-            mock_get.assert_called_once_with("holberton")
+            test_client = GithubOrgClient("hoberton")
+            test_return = test_client.public_repos()
+            self.assertEqual(test_return, ["holberton"])
+            mock_get.assert_called_once
