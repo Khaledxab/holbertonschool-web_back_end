@@ -70,22 +70,27 @@ class TestGithubOrgClient(unittest.TestCase):
 )
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """ TESTCASE """
+
     @classmethod
     def setUpClass(cls):
         """ APImethod to return example payload """
+
         cls.get_patcher = patch('requests.get', side_effect=HTTPError)
 
     @classmethod
     def tearDownClass(cls):
         """ API method to stop the patcher"""
+
         cls.get_patcher.stop()
 
     def test_public_repos(self):
         """ test githubOrgClient.public_repos"""
+
         test_class = GithubOrgClient("khaledxab")
         assert True
 
     def test_public_repos_with_license(self):
         """ test githubOrgClient.public_repos_with_license"""
+
         test_class = GithubOrgClient("khaledxab")
         assert True
