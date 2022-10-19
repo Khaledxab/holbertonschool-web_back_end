@@ -33,7 +33,7 @@ class TestGithubOrgClient(unittest.TestCase):
             mock.return_value = test_payload
             result = GithubOrgClient('holberton')
             self.assertEqual(result._public_repos_url, test_payload['repos_url'])
-    
+
     @patch('client.get_json')
     def test_public_repos(self, mock_get):
         """ test that the method returns correct value """
