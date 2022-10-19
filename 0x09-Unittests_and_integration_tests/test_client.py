@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """ Parameterize patch as decorators with making property
-and more patching """
+and more patching, Integration tests """
 import unittest
-from unittest.mock import patch, PropertyMock
+from unittest.mock import patch, PropertyMock, Mock
 from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
 from fixtures import TEST_PAYLOAD
