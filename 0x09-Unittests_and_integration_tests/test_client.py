@@ -44,7 +44,6 @@ class TestGithubOrgClient(unittest.TestCase):
         ("abc"),
     ])
     @patch('client.get_json')
-    @patch('client.GithubOrgClient._public_repos_url', new_callable=PropertyMock)
     def test_public_repos(self, test_input, mock_property, mock_get):
         """ test that the method returns what it is supposed to """
         test_client = GithubOrgClient(test_input)
@@ -57,12 +56,13 @@ class TestGithubOrgClient(unittest.TestCase):
     @parameterized.expand([
         ({"license": {"key": "my_license"}}, "my_license", True),
         ({"license": {"key": "other_license"}}, "my_license", False),
-        ])
+    ])
     def test_has_license(self, repo, license_key, expected, test_input):
         """ test that the method returns what it is supposed to """
         test_client = GithubOrgClient("khaledxab")
         result = test_client.has_license(repo, license_key)
         self.assertEqual(result, expected)
+
 
 @parameterized_class(
     ("org_payload", "repos_payload", "expected_repos", "apache2_repos"),
@@ -82,10 +82,10 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
 
     def test_public_repos(self):
         """ test githubOrgClient.public_repos"""
-        test_class= GithubOrgClient("khaledxab")
+        test_class = GithubOrgClient("khaledxab")
         assert True
 
     def test_public_repos_with_license(self):
         """ test githubOrgClient.public_repos_with_license"""
-        test_class= GithubOrgClient("khaledxab")
+        test_class = GithubOrgClient("khaledxab")
         assert True
