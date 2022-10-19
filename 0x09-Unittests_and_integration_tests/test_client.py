@@ -24,3 +24,11 @@ class TestGithubOrgClient(unittest.TestCase):
         result = GithubOrgClient(org_name)
         self.assertEqual(result.org, test_payload)
         mock_get.assert_called_once_with(test_url)
+
+    def test_public_repos_url(self):
+        """ test that the method returns correct value """
+        test_payload = {"repos_url": "google"}
+        with patch.object(GithubOrgClient, 'org', new_callable=property) as mock:
+            mock.return_value = test_payload
+            result = GithubOrgClient('google')
+            self.assertEqual(result._public_repos_url, test_payload['repos_url'])
