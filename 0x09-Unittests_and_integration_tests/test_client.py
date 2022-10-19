@@ -8,40 +8,55 @@ from client import GithubOrgClient
 
 
 class TestGithubOrgClient(unittest.TestCase):
-    """ test class """
-    """ input to test the function """
-
+    """ TESTCASE """
+    """ to test the function for following inputs """
     @parameterized.expand([
         ("google"),
         ("abc"),
     ])
     @patch('client.get_json')
-    def test_org(self, org_name, mock_get):
-        """ test that the method returns correct value """
+    def test_org(self, test_input, mock_get):
+        """ test that the method returns what it is supposed to """
+        test_client = GithubOrgClient(test_input)
+        result = test_client.org
+        self.assertEqual(result, mock_get.return_value)
+        mock_get.assert_called_once_with(
+            f'https://api.github.com/orgs/{test_input}')
 
-        test_url = f"https://api.github.com/orgs/{org_name}"
-        test_payload = {"payload": True}
-        mock_get.return_value = test_payload
-        result = GithubOrgClient(org_name)
-        self.assertEqual(result.org, test_payload)
-        mock_get.assert_called_once_with(test_url)
+    """ to test the function for following inputs """
+    @parameterized.expand([
+        ("google"),
+        ("abc"),
+    ])
+    @patch('client.GithubOrgClient.org', new_callable=PropertyMock)
+    def test_public_repos_url(self, test_input, mock_property):
+        """ test that the method returns what it is supposed to """
+        test_client = GithubOrgClient(test_input)
+        result = test_client._public_repos_url
+        self.assertEqual(result, mock_property.return_value['repos_url'])
+        mock_property.assert_called_once()
 
-    def test_public_repos_url(self):
-        """ test that the method returns correct value """
-        test_payload = {"repos_url": "holberton"}
-        with patch.object(GithubOrgClient,
-                          "org",
-                          new_callable=PropertyMock) as mock_org:
-            mock_org.return_value = test_payload
-            result = GithubOrgClient("holberton")
-            self.assertEqual(result._public_repos_url, "holberton")
+    """ to test the function for following inputs """
+    @parameterized.expand([
+        ("google"),
+        ("abc"),
+    ])
+    @patch('client.get_json')
+    @patch('client.GithubOrgClient._public_repos_url', new_callable=PropertyMock)
+    def test_public_repos(self, test_input, mock_property, mock_get):
+        """ test that the method returns what it is supposed to """
+        test_client = GithubOrgClient(test_input)
+        result = test_client.public_repos()
+        self.assertEqual(result, mock_get.return_value)
+        mock_property.assert_called_once()
+        mock_get.assert_called_once_with(mock_property.return_value)
 
-    @patch("client.get_json", return_value=[{"name": "holberton"}])
-    def test_public_repos(self, mock_get):
-        """ test that the method returns correct value """
-        with patch.object(GithubOrgClient, '_public_repos_url',
-                          new_callable=PropertyMock) as mock_url:
-            mock_url.return_value = "holberton"
-            result = GithubOrgClient("holberton")
-            self.assertEqual(result.public_repos(), ["holberton"])
-            mock_get.assert_called_once_with("holberton")
+    """ to test the function for following inputs """
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}), ({}),
+        ])
+    def test_has_license(self, test_input, test_license):
+        """ to unit-test GithubOrgClient.has_license """
+        test_client = GithubOrgClient("test")
+        result = test_client.has_license(test_input, test_license)
+        self.assertEqual(result, test_license in test_input['license']['key'])
