@@ -56,8 +56,8 @@ class TestGithubOrgClient(unittest.TestCase):
         ({"license": {"key": "my_license"}}, "my_license", True),
         ({"license": {"key": "other_license"}}, "my_license", False),
         ])
-    def test_has_license(self, test_input, test_license):
-        """ to unit-test GithubOrgClient.has_license """
-        test_client = GithubOrgClient("test")
-        result = test_client.has_license(test_input, test_license)
-        self.assertEqual(result, test_license in test_input['license']['key'])
+    def test_has_license(self, repo, license_key, expected, test_input):
+        """ test that the method returns what it is supposed to """
+        test_client = GithubOrgClient(test_input)
+        result = test_client.has_license(repo, license_key)
+        self.assertEqual(result, expected)
