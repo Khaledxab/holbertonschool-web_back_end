@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-""" Basic Flask app  """
+""" Basic Flask app basic babel setup, locale from request,
+    parametrize templates, force locale with url parameter """
 from flask import Flask, render_template, request
 from flask_babel import Babel, gettext
 app = Flask(__name__)
