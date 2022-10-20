@@ -6,14 +6,6 @@ from flask_babel import Babel
 app = Flask(__name__)
 
 babel = Babel(app)
-""" instantiate the Babel object """
-users = {
-    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
-    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
-    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
-    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
-}
-""" mock database of users """
 
 
 class Config(object):
@@ -24,6 +16,13 @@ class Config(object):
 
 
 app.config.from_object(Config)
+
+users = {
+    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
+    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
+    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
+    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
+}
 
 
 @app.route('/')
