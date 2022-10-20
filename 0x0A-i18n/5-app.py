@@ -46,6 +46,7 @@ def get_user():
         user_id = int(request.args.get('login_as'))
         if user_id in users:
             return users[user_id]
+    return None
 
 @app.before_request
 def before_request():
