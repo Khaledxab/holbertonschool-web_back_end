@@ -25,12 +25,6 @@ users = {
 }
 
 
-@app.route('/')
-def root():
-    """ Root route """
-    return render_template('5-index.html')
-
-
 @babel.localeselector
 def get_locale():
     """ Get locale from request """
@@ -55,6 +49,12 @@ def before_request():
     user = get_user()
     if user:
         g.user = user
+
+
+@app.route('/')
+def root():
+    """ Root route """
+    return render_template('5-index.html')
 
 
 if __name__ == "__main__":
