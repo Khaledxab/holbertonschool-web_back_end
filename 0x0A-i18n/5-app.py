@@ -51,7 +51,7 @@ def get_user():
 @app.before_request
 def before_request():
     """ Before request """
-    user = get_user(request.args.get('login_as'))
+    user = get_user()
     if user:
         g.user = user
 
