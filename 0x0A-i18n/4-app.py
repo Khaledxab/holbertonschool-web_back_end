@@ -2,7 +2,7 @@
 """ Basic Flask app basic babel setup, locale from request,
     parametrize templates, force locale with url parameter """
 from flask import Flask, render_template, request
-from flask_babel import Babel, gettext
+from flask_babel import Babel
 app = Flask(__name__)
 
 babel = Babel(app)
