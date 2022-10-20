@@ -48,6 +48,7 @@ def get_user():
             return users[user_id]
     return None
 
+
 @app.before_request
 def before_request():
     """ Before request """
