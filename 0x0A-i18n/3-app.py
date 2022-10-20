@@ -6,7 +6,7 @@ from flask_babel import Babel, gettext
 
 app = Flask(__name__)
 babel = Babel(app)
-
+""" instantiate the Babel object """
 
 class Config(object):
     """ Config class """
