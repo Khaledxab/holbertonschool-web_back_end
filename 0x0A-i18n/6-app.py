@@ -63,6 +63,7 @@ def get_user() -> Union[dict, None]:
 @app.before_request
 def before_request():
     """ Finds user and sets as global on flask.g.user """
+    user = get_user()
     g.user = get_user()
 
 
