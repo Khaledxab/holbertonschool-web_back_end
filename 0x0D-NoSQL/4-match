@@ -1,0 +1,2 @@
+// lists all documents with a tag in collection
+db.school.find({ name: "Holberton school" })
