@@ -11,5 +11,7 @@ describe('sendPaymentRequestToApi function', () => {
         sendPaymentRequestToApi(100, 20);
         chai.expect(spy.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
         spy.restore();
+        stubUtils.restore()
+        spyConsole.restore();
     });
 });
