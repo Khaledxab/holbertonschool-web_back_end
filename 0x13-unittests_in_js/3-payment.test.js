@@ -12,4 +12,4 @@ describe('sendPaymentRequestToApi function', () => {
         chai.expect(spy.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
         spy.restore();
     });
-    });
+});
