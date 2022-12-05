@@ -1,13 +1,13 @@
 -- Creates trigger to reset the attribute valid_email 
 
 DELIMITER $$
-CREATE TRIGGER valid_email BEFORE INSERT ON users
-FOR EACH ROW
+CREATE TRIGGER 
+validate_email
+BEFORE UPDATE 
+ON users FOR EACH ROW
 BEGIN
-    IF NEW.email NOT REGEXP '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$' THEN
-        SET NEW.valid_email = 0;
-    ELSE
-        SET NEW.valid_email = 1;
+    IF OLD.email <> NEW.email THEN
+    SET NEW.valid_email = 0;
     END IF;
 END$$
 DELIMITER ;
