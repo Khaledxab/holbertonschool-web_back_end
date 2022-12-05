@@ -1,19 +1,7 @@
 'use strict';
-const request = require('request');
-const chai = require('chai');
+const express = require('express');
+const app = express();
+const port = 7865;
 
-describe('basic integration testing', () => {
-  describe('GET /', () => {
-    it('endpoint GET /', (done) => {
-      const call = {
-        url: 'http://localhost:7865',
-        method: 'GET',
-      };
-      request(call, (error, response, body) => {
-        chai.expect(response.statusCode).to.equal(200);
-        chai.expect(body).to.equal('Welcome to the payment system');
-        done();
-      });
-    });
-  });
-});
+app.get('/', (req, res) => res.end('Welcome to the payment system'))
+app.listen(port, () => console.log(`API available on localhost port ${port}`));
